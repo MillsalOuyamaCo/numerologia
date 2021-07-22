@@ -1,5 +1,6 @@
 const express = require("express");
 const app = express();
+const cors = require("cors");
 const handlebars = require("express-handlebars");
 const bodyParser = require("body-parser");
 const { json } = require("body-parser");
@@ -25,6 +26,7 @@ const letra = require("./nome");
 //const reduzirCalculo = require("./nome");
 
 
+app.use(cors());
 
 //config
  //Template Engine
@@ -506,7 +508,8 @@ app.post("/calculo", function(req,res) {
     }
 
 
-    res.render('resumo' , {
+    //res.render('resumo' , {
+    res.send({
         nome_teste: nome_tes, 
         alma: alma,
         aparencia: aparencia,
@@ -595,7 +598,8 @@ app.post("/novoMapa", function(req, res){
     console.log('---------------------------------------------------------- ' + req.body.temperamento)
     console.log(req.body)
     
-       var rtVibracao = validaVibracao(req.body.vibracao, res)   
+       //var rtVibracao = validaVibracao(req.body.vibracao, res)
+       var rtVibracao = validaVibracao(req.body.segundoCiclo, res)   
        var rtAparencia = validaAparencia(req.body.aparencia, res)
        var rtAlma = validaAlma(req.body.alma, res)
        var rtDestino = validaDestino(req.body.destino, res)
@@ -632,8 +636,9 @@ app.post("/novoMapa", function(req, res){
        var rtTemperamento = validaTemperamento(req.body.temperamento)
     
 
-       res.render('resultadoNovo', {
-        //vibração
+       //res.render('resultadoNovo', {
+       res.send({ 
+       //vibração
         numero_vibracao: rtVibracao.id, descricao_vibracao: rtVibracao.descrição, 
         //Alma
         numero_alma: rtAlma.id, descricao_alma: rtAlma.descrição, 
@@ -752,7 +757,6 @@ app.get("/mapa", function(req, res){
 })
 */
 
-
-app.listen(3000, function(){
+app.listen(3001, function(){
     console.log("SERVIDOR RODANDO");
 })
