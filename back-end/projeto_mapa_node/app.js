@@ -507,6 +507,7 @@ app.post("/calculo", function (req, res) {
         var numeroCarmicoQuatro = retornoLicaoVida[0].toString();
     }
 
+    const resultadoAnoPessoal = letra.anoPessoal(dia, mes);
 
     //res.render('resumo' , {
     res.send({
@@ -554,8 +555,8 @@ app.post("/calculo", function (req, res) {
         numeroCarmicoDois: numeroCarmicoDois,
         numeroCarmicoTres: numeroCarmicoTres,
         numeroCarmicoQuatro: numeroCarmicoQuatro,
-        numeros: retornoNumeros.toString()
-
+        ausenciaCarmica: retornoAusencia,
+        numeros: retornoNumeros.toString(),
     })
     //res.send(alma[48].descrição);
 })
@@ -717,8 +718,8 @@ app.post("/novoMapa", function (req, res) {
         //ano pessoal
         numero_ano_pessoal: rtAnoPessoal.id, descricao_ano_pessoal: rtAnoPessoal.descrição,
         //ano pessoal data
-        anoPessoalUm: req.body.anoPessoalUm.split('-').reverse().join('/'),
-        anoPessoalDois: req.body.anoPessoalDois.split('-').reverse().join('/'),
+        //anoPessoalUm: req.body.anoPessoalUm.split('-').reverse().join('/'),
+        //anoPessoalDois: req.body.anoPessoalDois.split('-').reverse().join('/'),
 
         //quadrimestre
         /*
