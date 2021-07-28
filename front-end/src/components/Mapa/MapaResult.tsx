@@ -81,7 +81,7 @@ const MapaResult: React.FC<MapaProps> = ({ mapa }) => {
     return (
         <Container className='mt-5'>
             <Card>
-                <Card.Img variant="top" src="holder.js/100px180" />
+                <Card.Img variant="top"   />
                 <Card.Body>
                     <h2>VIBRAÇÃO</h2>
                     <h5>Representa o acordo natalício e o elemento a que você pertence: Fogo, Água ou Ar.
@@ -94,7 +94,7 @@ const MapaResult: React.FC<MapaProps> = ({ mapa }) => {
             </Card>
 
             <Card className='mt-5'>
-                <Card.Img variant="top" src="holder.js/100px180" />
+                <Card.Img variant="top"   />
                 <Card.Body>
                     <h2>ALMA</h2>
                     <h5>Representa o Eu Verdadeiro, a Sua Essência, A Natureza do Seu Ser, os Seus Valores.
@@ -106,7 +106,7 @@ const MapaResult: React.FC<MapaProps> = ({ mapa }) => {
             </Card>
 
             <Card className='mt-5'>
-                <Card.Img variant="top" src="holder.js/100px180" />
+                <Card.Img variant="top"   />
                 <Card.Body>
                     <h2>APARÊNCIA</h2>
                     <h5>Representa a imagem com a qual você se relaciona com o mundo. Indica a forma como outros te enxergam.
@@ -118,7 +118,7 @@ const MapaResult: React.FC<MapaProps> = ({ mapa }) => {
             </Card>
 
             <Card className='mt-5'>
-                <Card.Img variant="top" src="holder.js/100px180" />
+                <Card.Img variant="top"   />
                 <Card.Body>
                     <h2>DESTINO</h2>
                     <h5>Indica o caminho que já está disponível para você seguir com mais facilidade e realizar a sua missão na Terra.
@@ -130,7 +130,7 @@ const MapaResult: React.FC<MapaProps> = ({ mapa }) => {
             </Card>
 
             <Card className='mt-5'>
-                <Card.Img variant="top" src="holder.js/100px180" />
+                <Card.Img variant="top"   />
                 <Card.Body>
                     <h2>LIÇÃO DE VIDA (CAMINHO DO DESTINO)</h2>
                     <h5>Representa as lições que você precisa aprender nesta vida e é da maior importância na escolha de uma carreira.
@@ -142,7 +142,7 @@ const MapaResult: React.FC<MapaProps> = ({ mapa }) => {
             </Card>
 
             <Card className='mt-5'>
-                <Card.Img variant="top" src="holder.js/100px180" />
+                <Card.Img variant="top"   />
                 <Card.Body>
                     <h2>DIA NATALICIO</h2>
                     <h5>O dia de nascimento indica o talento interior oculto, que pode ser aplicado na escolha da carreira.
@@ -154,7 +154,7 @@ const MapaResult: React.FC<MapaProps> = ({ mapa }) => {
             </Card>
 
             <Card className='mt-5'>
-                <Card.Img variant="top" src="holder.js/100px180" />
+                <Card.Img variant="top"   />
                 <Card.Body>
                     <h2>LIÇÕES CARMICAS</h2>
                     <h5>Cada número que lhe falta no nome dá uma indicação dos pontos fracos que devem ser fortalecidos. Estas ausências sugerem normas de comportamento ou lições para facilitar sua vida.
@@ -175,7 +175,7 @@ const MapaResult: React.FC<MapaProps> = ({ mapa }) => {
             </Card>
 
             <Card className='mt-5'>
-                <Card.Img variant="top" src="holder.js/100px180" />
+                <Card.Img variant="top"   />
                 <Card.Body>
                     <h2>PRIMEIRA VOGAL</h2>
                     <h5>A Primeira Vogal mostra os seus impulsos emocionais,  atitudes e reações diante de estímulos externos.
@@ -187,7 +187,7 @@ const MapaResult: React.FC<MapaProps> = ({ mapa }) => {
             </Card>
 
             <Card className='mt-5'>
-                <Card.Img variant="top" src="holder.js/100px180" />
+                <Card.Img variant="top"   />
                 <Card.Body>
                     <h2>REALIZAÇÕES</h2>
                     <h5>São períodos em que o Universo lhe proporciona a oportunidade de crescimento, são comparáveis a um teste que você tem que fazer. Suas vibrações são exatas ao período em que vive seus ciclos. São mudanças ou transformações que você sofre sob a influência dos números e lhe apontam para a direção em que deve obter sucesso. Eles irão sugerir suas oportunidades. Conhecê-los o levará a compreender as modificações em suas atitudes em relação à vida.
@@ -208,7 +208,7 @@ const MapaResult: React.FC<MapaProps> = ({ mapa }) => {
             </Card>
 
             <Card className='mt-5'>
-                <Card.Img variant="top" src="holder.js/100px180" />
+                <Card.Img variant="top"   />
                 <Card.Body>
                     <h2>DESAFIOS</h2>
                     <h5>Ao longo de sua existência você experimentará alguns desafios, sem os quais sua vida seria terrivelmente monótona.  Os empecilhos e obstáculos servem para sacudi-lo para fora de sua letargia, forçando-o a combater os elementos e dificuldades que lhe impedem de alcançar sua meta. 
@@ -230,7 +230,7 @@ const MapaResult: React.FC<MapaProps> = ({ mapa }) => {
             </Card>
 
             <Card className='mt-5'>
-                <Card.Img variant="top" src="holder.js/100px180" />
+                <Card.Img variant="top"   />
                 <Card.Body>
                     <h2>CICLOS</h2>
                     <h5>Há três grandes períodos em sua vida:
@@ -253,7 +253,7 @@ const MapaResult: React.FC<MapaProps> = ({ mapa }) => {
             </Card>
 
             <Card className='mt-5'>
-                <Card.Img variant="top" src="holder.js/100px180" />
+                <Card.Img variant="top"   />
                 <Card.Body>
                     <h2>NÚMERO DO PODER</h2>
                     <h5>É o farol que lhe guia através dos anos. Com esse número sua vida será cheia de sentido, útil e feliz. 
@@ -267,7 +267,7 @@ const MapaResult: React.FC<MapaProps> = ({ mapa }) => {
             </Card>
 
             <Card className='mt-5'>
-                <Card.Img variant="top" src="holder.js/100px180" />
+                <Card.Img variant="top"   />
                 <Card.Body>
                     <h2>ANO PESSOAL</h2>
                     <h5>Cada ano tem sua própria vibração - conjunto de influências, oportunidades e obstáculos. Sabendo antecipadamente o que esperar, você poderá aproveitar melhor as oportunidades que o ano oferece.
@@ -279,7 +279,7 @@ const MapaResult: React.FC<MapaProps> = ({ mapa }) => {
             </Card>
 
             <Card className='mt-5'>
-                <Card.Img variant="top" src="holder.js/100px180" />
+                <Card.Img variant="top"   />
                 <Card.Body>
                     <h2>ANO PESSOAL</h2>
                     <h5>Cada ano tem sua própria vibração - conjunto de influências, oportunidades e obstáculos. Sabendo antecipadamente o que esperar, você poderá aproveitar melhor as oportunidades que o ano oferece.
@@ -291,7 +291,7 @@ const MapaResult: React.FC<MapaProps> = ({ mapa }) => {
             </Card>
 
             <Card className='mt-5'>
-                <Card.Img variant="top" src="holder.js/100px180" />
+                <Card.Img variant="top"   />
                 <Card.Body>
                     <h2>QUADRIMESTRE</h2>
                     <h5>Dentro do Ano Pessoal você tem três Quadrimestres que apontam as possibilidades do período.
@@ -309,7 +309,7 @@ const MapaResult: React.FC<MapaProps> = ({ mapa }) => {
             </Card>
             
             <Card className='mt-5'>
-                <Card.Img variant="top" src="holder.js/100px180" />
+                <Card.Img variant="top"   />
                 <Card.Body>
                     <h2>TEMPERAMENTO</h2>
                     <h5>Seu Temperamento é :  
@@ -321,7 +321,7 @@ const MapaResult: React.FC<MapaProps> = ({ mapa }) => {
             </Card>
 
             <Card className='mt-5'>
-                <Card.Img variant="top" src="holder.js/100px180" />
+                <Card.Img variant="top"   />
                 <Card.Body>
                     <h2>ASSINATURA</h2>
                     <h5>A forma como você assina diz muito sobre a sua personalidade. Ela é a sua marca, seu carimbo. 

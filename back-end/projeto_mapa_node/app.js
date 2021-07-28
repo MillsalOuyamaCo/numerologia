@@ -273,8 +273,8 @@ app.post("/calculo", function (req, res) {
 
     var almaRetorno = letra.somarLetras(retornoNumerosVogais);
 
-    if (almaRetorno[0].toString().length > 1 && almaRetorno[0].toString() == '11'
-        || almaRetorno[0].toString() == '22') {
+    if ((almaRetorno[0].toString().length > 1 && almaRetorno[0].toString() == '11')
+        || (almaRetorno[0].toString() == '22')) {
         var alma = almaRetorno[0].toString().concat('/', almaRetorno[1].toString())
     } else if (almaRetorno[0].toString().length > 1) {
         var alma = almaRetorno[1].toString()
@@ -548,7 +548,7 @@ app.post("/calculo", function (req, res) {
         desafioDt7: desafioDt7,
         desafioUm: desafioUm,
         desafioDois: desafioDois,
-        desafioTres: desafioTres,
+        desafioTres: desafioTres, 
         desafioQuatro: desafioQuatro,
         //numero carmico
         numeroCarmicoUm: numeroCarmicoUm,
@@ -556,6 +556,8 @@ app.post("/calculo", function (req, res) {
         numeroCarmicoTres: numeroCarmicoTres,
         numeroCarmicoQuatro: numeroCarmicoQuatro,
         ausenciaCarmica: retornoAusencia,
+        //ano pessoal
+        anoPessoal: resultadoAnoPessoal,
         numeros: retornoNumeros.toString(),
     })
     //res.send(alma[48].descrição);

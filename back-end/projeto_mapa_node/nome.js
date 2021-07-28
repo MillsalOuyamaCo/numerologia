@@ -331,6 +331,22 @@ const anoPessoal = (dia, mes) => {
 
     const result = somarLetras([dayReduced, monthReduced, yearReduced]);
 
+    let anoPessoal = ''
+
+    if (result[0].toString().length > 1) {
+        if (result[0] > 78) {
+            // if(destinoRetorno[0].toString().length > 2){
+             anoPessoal = result[1].toString()
+            
+        } else {
+             anoPessoal = result[0].toString().concat('/', result[1].toString())
+            
+        }
+    } else {
+         anoPessoal = result[0].toString()
+      
+        }
+
     console.log("ANO PESSOAL >>>>>>> ");
     console.log("ACTUAL DATE: " + actualDate);
     console.log("birthdate: " + birthdate);
@@ -349,7 +365,7 @@ const anoPessoal = (dia, mes) => {
     console.log("RESULTADO REDUZIDO: " + result);
 
 
-    return result;
+    return anoPessoal;
 }
 
 

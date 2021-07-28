@@ -61,7 +61,9 @@ function Home() {
         numeroCarmicoUm: "",
         numeroCarmicoDois: "",
         numeroCarmicoTres: "",
-        numeroCarmicoQuatro: ""
+        numeroCarmicoQuatro: "",
+        anoPessoal: "",
+        ausenciaCarmica: []
     };
 
     const Map: Mapa = {
@@ -237,7 +239,7 @@ function Home() {
                                     </FloatingLabel>
                                 </Col>
                                 <Col>
-                                    <FloatingLabel controlId="floatingInputGrid" label="Nome">
+                                    <FloatingLabel controlId="floatingInputGrid" label="Data de Nascimento">
                                         <Form.Control
                                             type="date"
                                             placeholder="Data de Nascimento"
