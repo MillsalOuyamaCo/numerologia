@@ -102,8 +102,12 @@ var somarLetras = function (lista_numeros) {
         }
     }
 
+    if(num_separado > 99) {
+        num_separado = num_separado/10;
+    }
+    
     console.log('TESTE FINAL = ' + num_separado)
-    return [num_separado.toString().replace('0', ''), reduzido]
+    return [num_separado.toString(), reduzido]
 }
 
 
@@ -156,6 +160,10 @@ var validarData = function (data_split) {
 
 
 var calcularRealizacao = function (numero_licaoVida, segundoCiclo, primeiroCiclo, terceiroCiclo) {
+
+    if(numero_licaoVida == "11") {
+        numero_licaoVida = "2";
+    }
 
     idadeDois = 36 - parseInt(numero_licaoVida)
     idadeTres = idadeDois + 1
@@ -220,6 +228,10 @@ var calcularRealizacao = function (numero_licaoVida, segundoCiclo, primeiroCiclo
 }
 
 var calcularDesafio = function (numero_licaoVida, segundoCiclo, primeiroCiclo, terceiroCiclo) {
+
+    if(numero_licaoVida == "11") {
+        numero_licaoVida = "2";
+    }
 
     idadeDois = 36 - parseInt(numero_licaoVida)
     idadeTres = idadeDois + 1
@@ -311,7 +323,7 @@ var ausenciaCarmica = function (numeros_existe) {
 }
 
 const anoPessoal = (dia, mes) => {
-    const actualDate = new Date().toLocaleDateString().split('/').reverse().join('');
+    const actualDate = new Date().toLocaleDateString('en-GB').split('/').reverse().join('');
     const birthdate = new Date().getFullYear().toString() + mes + dia;
     const isBirthdayThisYear = birthdate < actualDate;
     let yearToCalculate = parseInt(new Date().getFullYear());
@@ -363,7 +375,7 @@ const anoPessoal = (dia, mes) => {
     console.log("MES REDUZIDO: " + monthReduced);
     console.log("ANO REDUZIDO: " + yearReduced);
     console.log("RESULTADO REDUZIDO: " + result);
-
+    console.log(new Date().toLocaleDateString('en-CA'));
 
     return anoPessoal;
 }

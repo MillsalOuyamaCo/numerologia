@@ -199,7 +199,9 @@ function Home() {
             numeroCarmicoUm: numerologyResponse.numeroCarmicoUm,
             numeroCarmicoDois: numerologyResponse.numeroCarmicoDois,
             numeroCarmicoTres: numerologyResponse.numeroCarmicoTres,
-            numeroCarmicoQuatro: numerologyResponse.numeroCarmicoQuatro
+            numeroCarmicoQuatro: numerologyResponse.numeroCarmicoQuatro,
+            anoPessoal: numerologyResponse.anoPessoal,
+            ausenciaCarmica: numerologyResponse.ausenciaCarmica
         }).then(response => {
             setMapResponse(response.data);
         })

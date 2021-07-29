@@ -273,23 +273,49 @@ app.post("/calculo", function (req, res) {
 
     var almaRetorno = letra.somarLetras(retornoNumerosVogais);
 
-    if ((almaRetorno[0].toString().length > 1 && almaRetorno[0].toString() == '11')
-        || (almaRetorno[0].toString() == '22')) {
-        var alma = almaRetorno[0].toString().concat('/', almaRetorno[1].toString())
-    } else if (almaRetorno[0].toString().length > 1) {
-        var alma = almaRetorno[1].toString()
+    // if ((almaRetorno[0].toString().length > 1 && almaRetorno[0].toString() == '11')
+    //     || (almaRetorno[0].toString() == '22')) {
+    //     var alma = almaRetorno[0].toString().concat('/', almaRetorno[1].toString())
+    // } else if (almaRetorno[0].toString().length > 1) {
+    //     var alma = almaRetorno[1].toString()
+    // } else {
+    //     var alma = almaRetorno[0].toString()
+    // }
+
+    var alma;
+
+    if (almaRetorno[0].toString().length > 1) {
+        if (almaRetorno[0] > 78) {
+            // if(destinoRetorno[0].toString().length > 2){
+            alma = almaRetorno[1].toString()
+        } else {
+            alma = almaRetorno[0].toString().concat('/', almaRetorno[1].toString())
+
+        }
     } else {
-        var alma = almaRetorno[0].toString()
+        alma = almaRetorno[0].toString()
     }
 
     var aparenciaRetorno = letra.somarLetras(retornoNumerosCons);
-    if (aparenciaRetorno[0].toString().length > 1 && aparenciaRetorno[0].toString() == '11'
-        || aparenciaRetorno[0].toString() == '22') {
-        var aparencia = aparenciaRetorno[0].toString().concat('/', aparenciaRetorno[1].toString())
-    } else if (aparenciaRetorno[0].toString().length > 1) {
-        var aparencia = aparenciaRetorno[1].toString()
+    // if (aparenciaRetorno[0].toString().length > 1 && aparenciaRetorno[0].toString() == '11'
+    //     || aparenciaRetorno[0].toString() == '22') {
+    //     var aparencia = aparenciaRetorno[0].toString().concat('/', aparenciaRetorno[1].toString())
+    // } else if (aparenciaRetorno[0].toString().length > 1) {
+    //     var aparencia = aparenciaRetorno[1].toString()
+    // } else {
+    //     var aparencia = aparenciaRetorno[0].toString()
+    // }
+    var aparencia;
+    if (aparenciaRetorno[0].toString().length > 1) {
+        if (aparenciaRetorno[0] > 78) {
+            // if(destinoRetorno[0].toString().length > 2){
+            aparencia = aparenciaRetorno[1].toString()
+        } else {
+            aparencia = aparenciaRetorno[0].toString().concat('/', aparenciaRetorno[1].toString())
+
+        }
     } else {
-        var aparencia = aparenciaRetorno[0].toString()
+        aparencia = aparenciaRetorno[0].toString()
     }
 
     /*
@@ -456,12 +482,66 @@ app.post("/calculo", function (req, res) {
     // contar quantidade de vezes que os numeros se repetem
     var map = retornoNumeros.reduce(function (prev, cur) {
         prev[cur] = (prev[cur] || 0) + 1;
+        // console.log(`DENTRO DO REDUCER cur: ` + cur);        
+        // console.log(`DENTRO DO REDUCER prev[${cur}]: ` + prev[cur]); 
+        // console.log("DENTRO DO REDUCER prev: " + JSON.stringify(prev));        
+
         return prev;
     }, {});
 
-    repeticaoNumero = Object.values(map)
+    //map["8"] = 0;
 
-    var temperamento = '';
+    repeticaoNumero = Object.values(map);
+
+    var numeros_existe = Object.keys(map);
+    var retornoAusencia = letra.ausenciaCarmica(numeros_existe);
+
+    retornoAusencia.forEach((numerosInterceccao, index) => {
+        map[numerosInterceccao] = 0;
+    });
+
+    var mentalNumber = map["1"] + map["8"];
+    var emocionalNumber = map["2"] + map["3"] + map["6"];
+    var fisicoNumber = map["4"] + map["5"];
+    var intuitivoNumber = map["7"] + map["9"];
+
+    console.log("mental number: " + mentalNumber);
+    console.log("emocionalNumber: " + emocionalNumber);
+    console.log("fisicoNumber: " + fisicoNumber);
+    console.log("intuitivoNumber: " + intuitivoNumber);
+
+    var temperamentoArray = [
+        {
+            resultadoTemperamento: "MENTAL",
+            valor: mentalNumber
+        },
+        {
+            resultadoTemperamento: "EMOCIONAL",
+            valor: emocionalNumber
+        },
+        {
+            resultadoTemperamento: "FÍSICO",
+            valor: fisicoNumber
+        },
+        {
+            resultadoTemperamento: "INTUITIVO",
+            valor: intuitivoNumber
+        },
+    ]
+    console.log("temperamentoArray: " + JSON.stringify(temperamentoArray));
+    var temperamentoMax = Math.max.apply(Math, temperamentoArray.map(
+        function (obj) {
+            return obj.valor;
+        }
+    ));
+
+    console.log("CALCULO TEMPERAMENTO: " + temperamentoMax);
+
+
+    var temperamentoObject = temperamentoArray.find(objTemperamento => objTemperamento.valor === temperamentoMax);
+    console.log("TemperamentoObject: " + JSON.stringify(temperamentoObject));
+
+
     var temperamentoNumero;
     if (repeticaoNumero[0] == 1 || repeticaoNumero[0] == 8) {
         temperamento = 'MENTAL'
@@ -477,12 +557,12 @@ app.post("/calculo", function (req, res) {
         temperamentoNumero = repeticaoNumero[0]
     }
 
-    console.log(Object.keys(map))
-    console.log(Object.values(map))
-
-
-    var numeros_existe = Object.keys(map);
-    var retornoAusencia = letra.ausenciaCarmica(numeros_existe)
+    console.log("TEMPERAMENTO repeticaoNumero: " + repeticaoNumero)
+    console.log("TEMPERAMENTO retornoNumeros: " + retornoNumeros)
+    console.log("TEMPERAMENTO map: " + JSON.stringify(map))
+    console.log("TEMPERAMENTO map[8]: " + JSON.stringify(map[8]))
+    console.log("TEMPERAMENTO INDICE: " + Object.keys(map))
+    console.log("TEMPERAMENTO VALOR: " + Object.values(map))
 
     console.log(retornoAusencia)
 
@@ -524,8 +604,8 @@ app.post("/calculo", function (req, res) {
         data_nasc: dataTela,
         poder: poder,
         repeticaoNumero: repeticaoNumero,
-        temperamento: temperamento,
-        temperamentoNumero: temperamentoNumero,
+        temperamento: temperamentoObject.resultadoTemperamento,
+        temperamentoNumero: temperamentoObject.valor,
         vibracao: vibracao,
         realizacaoDt1: realizacaoDt1,
         realizacaoDt2: realizacaoDt2,
@@ -548,7 +628,7 @@ app.post("/calculo", function (req, res) {
         desafioDt7: desafioDt7,
         desafioUm: desafioUm,
         desafioDois: desafioDois,
-        desafioTres: desafioTres, 
+        desafioTres: desafioTres,
         desafioQuatro: desafioQuatro,
         //numero carmico
         numeroCarmicoUm: numeroCarmicoUm,
@@ -632,12 +712,11 @@ app.post("/novoMapa", function (req, res) {
     var rtCicloProdutivo = validaCiclo(req.body.segundoCiclo, res)
     var rtCicloColheita = validaCiclo(req.body.terceiroCiclo, res)
     var rtPoder = validaPoder(req.body.poder, res)
-    var rtAnoPessoal = validaAnoPessoal(req.body.ano_pessoal)
+    var rtAnoPessoal = validaAnoPessoal(req.body.anoPessoal)
     //  var rtQuadrimestreUm = validaAnoPessoal(req.body.quadrimestreUm, res)
     //  var rtQuadrimestreDois = validaAnoPessoal(req.body.quadrimestreDois, res)
     // var rtQuadrimestreTres = validaAnoPessoal(req.body.quadrimestreTres, res)
     var rtTemperamento = validaTemperamento(req.body.temperamento)
-
 
     //res.render('resultadoNovo', {
     res.send({

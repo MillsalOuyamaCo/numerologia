@@ -1,13 +1,14 @@
 const  anoPessoal = require("./model/ano_pessoal.json");
 
 
-var validarAnoPessoal = function (id_ano, res) {
+var validarAnoPessoal = function (id_ano) {
     
     var listaAux = [];
     var passou = false;
+    console.log("ID ANO PESSOAL: " + id_ano);
 
     for (var i = 0; i < anoPessoal.length; i++) {
-        
+        console.log(`ANO PESSOAL[${i}]: ` + anoPessoal[i]);
         if(anoPessoal[i].id == id_ano){
             listaAux = anoPessoal[i];
 

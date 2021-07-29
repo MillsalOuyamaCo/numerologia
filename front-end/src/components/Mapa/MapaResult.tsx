@@ -274,18 +274,6 @@ const MapaResult: React.FC<MapaProps> = ({ mapa }) => {
                     </h5>
                     <br />
                     <Card.Text><strong className="font-weight-bold">De </strong> {mapa.numero_ano_pessoal} </Card.Text>
-                    <Card.Text> {mapa.descricao_vogal}</Card.Text>
-                </Card.Body>
-            </Card>
-
-            <Card className='mt-5'>
-                <Card.Img variant="top"   />
-                <Card.Body>
-                    <h2>ANO PESSOAL</h2>
-                    <h5>Cada ano tem sua própria vibração - conjunto de influências, oportunidades e obstáculos. Sabendo antecipadamente o que esperar, você poderá aproveitar melhor as oportunidades que o ano oferece.
-                    </h5>
-                    <br />
-                    <Card.Text><strong className="font-weight-bold">De </strong> {mapa.numero_ano_pessoal} <strong className="font-weight-bold"> à </strong> {mapa.numero_ano_pessoal} <strong className="font-weight-bold">| Você estará vivendo um Ano Pessoal : </strong> {mapa.numero_ano_pessoal} </Card.Text>
                     <Card.Text> {mapa.descricao_ano_pessoal}</Card.Text>
                 </Card.Body>
             </Card>
