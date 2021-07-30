@@ -588,10 +588,13 @@ app.post("/calculo", function (req, res) {
     }
 
     const resultadoAnoPessoal = letra.anoPessoal(dia, mes);
+    const resultadoQuadrimestre = letra.quadrimestre(dia, mes, ano, licaoVidaResumido, almaRetorno);
+    const age = letra.idade(dia, mes, ano);
 
     //res.render('resumo' , {
     res.send({
         nome_teste: nome_tes,
+        idade: age,
         alma: alma,
         aparencia: aparencia,
         destino: destino,
@@ -639,6 +642,7 @@ app.post("/calculo", function (req, res) {
         //ano pessoal
         anoPessoal: resultadoAnoPessoal,
         numeros: retornoNumeros.toString(),
+        quadrimestres: resultadoQuadrimestre
     })
     //res.send(alma[48].descrição);
 })
@@ -717,6 +721,8 @@ app.post("/novoMapa", function (req, res) {
     //  var rtQuadrimestreDois = validaAnoPessoal(req.body.quadrimestreDois, res)
     // var rtQuadrimestreTres = validaAnoPessoal(req.body.quadrimestreTres, res)
     var rtTemperamento = validaTemperamento(req.body.temperamento)
+
+    var quadrimestre = validaQuadrimestre(req.body.quadrimestres);
 
     //res.render('resultadoNovo', {
     res.send({

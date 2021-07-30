@@ -14,13 +14,14 @@ import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import numerologiaApi from '../../services/numerologiaApi';
 
 //components
-import CalculoForm, { Calculo } from '../../components/Calculo/CalculoResult';
+import CalculoForm, { Calculo, Quadrimestre } from '../../components/Calculo/CalculoResult';
 import MapaResult, { Mapa } from '../../components/Mapa/MapaResult';
 
 
 function Home() {
     const CalculoResponse: Calculo = {
         nome_teste: "",
+        idade: 0,
         alma: "",
         aparencia: "",
         destino: "",
@@ -63,7 +64,8 @@ function Home() {
         numeroCarmicoTres: "",
         numeroCarmicoQuatro: "",
         anoPessoal: "",
-        ausenciaCarmica: []
+        ausenciaCarmica: [],
+        quadrimestres: []
     };
 
     const Map: Mapa = {

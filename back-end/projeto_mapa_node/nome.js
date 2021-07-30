@@ -102,10 +102,10 @@ var somarLetras = function (lista_numeros) {
         }
     }
 
-    if(num_separado > 99) {
-        num_separado = num_separado/10;
+    if (num_separado > 99) {
+        num_separado = num_separado / 10;
     }
-    
+
     console.log('TESTE FINAL = ' + num_separado)
     return [num_separado.toString(), reduzido]
 }
@@ -161,7 +161,7 @@ var validarData = function (data_split) {
 
 var calcularRealizacao = function (numero_licaoVida, segundoCiclo, primeiroCiclo, terceiroCiclo) {
 
-    if(numero_licaoVida == "11") {
+    if (numero_licaoVida == "11") {
         numero_licaoVida = "2";
     }
 
@@ -229,7 +229,7 @@ var calcularRealizacao = function (numero_licaoVida, segundoCiclo, primeiroCiclo
 
 var calcularDesafio = function (numero_licaoVida, segundoCiclo, primeiroCiclo, terceiroCiclo) {
 
-    if(numero_licaoVida == "11") {
+    if (numero_licaoVida == "11") {
         numero_licaoVida = "2";
     }
 
@@ -332,32 +332,32 @@ const anoPessoal = (dia, mes) => {
         yearToCalculate = yearToCalculate - 1;
     }
 
-    const dayReducedArray = somarLetras([dia]);
-    const monthReducedArray = somarLetras([mes]);
+    // const dayReducedArray = somarLetras([dia]);
+    // const monthReducedArray = somarLetras([mes]);
     const yearReducedArray = somarLetras([yearToCalculate]);
-    
-    let dayReduced = dayReducedArray[0].toString().length > 1 ? dayReducedArray[1] : dayReducedArray[0];
-    let monthReduced = monthReducedArray[0].toString().length > 1 ? monthReducedArray[1] : monthReducedArray[0];
+
+    // let dayReduced = dayReducedArray[0].toString().length > 1 ? dayReducedArray[1] : dayReducedArray[0];
+    // let monthReduced = monthReducedArray[0].toString().length > 1 ? monthReducedArray[1] : monthReducedArray[0];
     let yearReduced = yearReducedArray[0].toString().length > 1 ? yearReducedArray[1] : yearReducedArray[0];
 
 
-    const result = somarLetras([dayReduced, monthReduced, yearReduced]);
+    const result = somarLetras([dia, mes, yearReduced]);
 
     let anoPessoal = ''
 
     if (result[0].toString().length > 1) {
         if (result[0] > 78) {
             // if(destinoRetorno[0].toString().length > 2){
-             anoPessoal = result[1].toString()
-            
+            anoPessoal = result[1].toString()
+
         } else {
-             anoPessoal = result[0].toString().concat('/', result[1].toString())
-            
+            anoPessoal = result[0].toString().concat('/', result[1].toString())
+
         }
     } else {
-         anoPessoal = result[0].toString()
-      
-        }
+        anoPessoal = result[0].toString()
+
+    }
 
     console.log("ANO PESSOAL >>>>>>> ");
     console.log("ACTUAL DATE: " + actualDate);
@@ -367,12 +367,12 @@ const anoPessoal = (dia, mes) => {
     console.log("Aniversaio ja passou: " + isBirthdayThisYear);
     console.log("ANO PASSADO: " + yearToCalculate);
 
-    console.log("DIA REDUZIDO ARRAY: " + dayReducedArray);
-    console.log("MES REDUZIDO ARRAY: " + monthReducedArray);
+    // console.log("DIA REDUZIDO ARRAY: " + dayReducedArray);
+    // console.log("MES REDUZIDO ARRAY: " + monthReducedArray);
     console.log("ANO REDUZIDO ARRAY: " + yearReducedArray);
 
-    console.log("DIA REDUZIDO: " + dayReduced);
-    console.log("MES REDUZIDO: " + monthReduced);
+    // console.log("DIA REDUZIDO: " + dayReduced);
+    // console.log("MES REDUZIDO: " + monthReduced);
     console.log("ANO REDUZIDO: " + yearReduced);
     console.log("RESULTADO REDUZIDO: " + result);
     console.log(new Date().toLocaleDateString('en-CA'));
@@ -380,6 +380,107 @@ const anoPessoal = (dia, mes) => {
     return anoPessoal;
 }
 
+const quadrimestre = (dia, mes, ano, licaoDeVida, alma) => {
+    let Quadrimester = class Quadrimester {
+        constructor(dataInicial, dataFinal, resultadoCalculo) {
+            this.dataInicial = dataInicial,
+                this.dataFinal = dataFinal,
+                this.resultadoCalculo = resultadoCalculo
+        }
+    };
+
+    let quadrimestreArray = [];
+
+    const actualDate = new Date().toLocaleDateString('en-GB').split('/').reverse().join('');
+    const birthdate = new Date().getFullYear().toString() + mes + dia;
+    const isBirthdayPassedThisYear = birthdate < actualDate;
+    let yearToCalculate = parseInt(new Date().getFullYear());
+
+    if (!isBirthdayPassedThisYear) {
+        yearToCalculate = yearToCalculate - 1;
+    }
+
+    const actualBirthday = dia + "/" + mes + "/" + yearToCalculate;
+    let quadrimesterOne = new Quadrimester();
+
+    //quadrimesterOne.dataInicial = actualBirthday;
+
+    var currentBirthday = new Date(yearToCalculate, mes - 1, dia);
+    console.log("PRIMEIRO ANO DE TODOS " + yearToCalculate);
+    console.log("PRIMEIRO MES DE TODOS " + mes);
+    console.log("PRIMEIRO DIA DE TODOS " + dia);
+    console.log("PRIMEIRA DATA DE TODAS " + currentBirthday);
+    currentBirthday.setMonth(currentBirthday.getMonth() + 4);
+    var finalDateOne = currentBirthday;
+    //quadrimesterOne.dataFinal = finalDateOne.toLocaleDateString();
+
+    console.log("DT.getMonth : " + finalDateOne.getMonth());
+    console.log("DT post calculus : " + finalDateOne);
+
+
+    const age = isBirthdayPassedThisYear ? new Date().getFullYear() - ano : new Date().getFullYear() - ano - 1;
+    const lastBirthdayYear = isBirthdayPassedThisYear ? new Date().getFullYear() : new Date().getFullYear() - 1;
+    const reducedBirthYearArray = somarLetras([lastBirthdayYear]);
+
+    console.log("idade: " + age);
+    console.log("ano de aniversario: " + lastBirthdayYear);
+    console.log("ano de aniversario reduzido: " + reducedBirthYearArray);
+
+    if (reducedBirthYearArray[0].toString().length > 1) {
+        var reducedBirthYear = reducedBirthYearArray[1]
+    } else {
+        var reducedBirthYear = reducedBirthYearArray[0]
+    }
+
+    const resultOneArray = somarLetras([age + parseInt(reducedBirthYear)])
+    const resultOne = resultOneArray[0] + "/" + resultOneArray[1];
+    quadrimesterOne = new Quadrimester(actualBirthday, finalDateOne.toLocaleDateString(), resultOne);
+
+    //quadrimesterOne.resultadoCalculo = somarLetras([age + parseInt(reducedBirthYear)]);
+    quadrimestreArray.push(quadrimesterOne);
+
+    console.log("quadrimestrre 1: " + JSON.stringify(quadrimesterOne));
+    console.log("quadrimestrrearray : " + JSON.stringify(quadrimestreArray));
+
+    const initialDateTwo = new Date(finalDateOne);
+    const finalDateTwo = new Date(initialDateTwo);
+    console.log("initial date two: " + initialDateTwo);
+    console.log("final date two: " + finalDateTwo);
+    finalDateTwo.setMonth(finalDateTwo.getMonth() + 4, finalDateTwo.getDate());
+    const resultTwoArray = somarLetras([licaoDeVida + parseInt(reducedBirthYear)]);
+    const resultTwo = resultTwoArray[0] + "/" + resultTwoArray[1];
+
+    let quadrimesterTwo = new Quadrimester(initialDateTwo.toLocaleDateString(), finalDateTwo.toLocaleDateString(), resultTwo);
+    quadrimestreArray.push(quadrimesterTwo);
+
+    console.log("quadrimestre 2: " + JSON.stringify(quadrimesterTwo));
+    console.log("quadrimestrrearray : " + JSON.stringify(quadrimestreArray));
+
+    const intialDateThree = new Date(finalDateTwo);
+    const finalDateThree = new Date(intialDateThree);
+    finalDateThree.setMonth(finalDateThree.getMonth() + 4, finalDateThree.getDate());
+    console.log("ALMA DENTRO DE QUADRIMESTRE: " + alma);
+    let resultThreeArray = somarLetras([alma[0] + parseInt(reducedBirthYear)]);
+    let resultThree = resultThreeArray[0] + "/" + resultThreeArray[1];
+
+    let quadrimesterThree = new Quadrimester(intialDateThree.toLocaleDateString(), finalDateThree.toLocaleDateString(), resultThree);
+    quadrimestreArray.push(quadrimesterThree);
+
+    console.log("quadrimestre 3: " + JSON.stringify(quadrimesterThree));
+    console.log("quadrimestrrearray : " + JSON.stringify(quadrimestreArray));
+
+    return quadrimestreArray;
+}
+
+const idade = (dia, mes, ano) => {
+    const actualDate = new Date().toLocaleDateString('en-GB').split('/').reverse().join('');
+    const birthdate = new Date().getFullYear().toString() + mes + dia;
+    const isBirthdayPassedThisYear = birthdate < actualDate;
+
+    const age = isBirthdayPassedThisYear ? new Date().getFullYear() - ano : new Date().getFullYear() - ano - 1;
+
+    return age;
+}
 
 module.exports = {
     calcularLetra,
@@ -390,7 +491,9 @@ module.exports = {
     calcularRealizacao,
     calcularDesafio,
     ausenciaCarmica,
-    anoPessoal
+    anoPessoal,
+    quadrimestre,
+    idade
 
 }
 
