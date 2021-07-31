@@ -323,7 +323,7 @@ var ausenciaCarmica = function (numeros_existe) {
 }
 
 const anoPessoal = (dia, mes) => {
-    const actualDate = new Date().toLocaleDateString('en-GB').split('/').reverse().join('');
+    const actualDate = new Date().toISOString().split('-').join('');
     const birthdate = new Date().getFullYear().toString() + mes + dia;
     const isBirthdayThisYear = birthdate < actualDate;
     let yearToCalculate = parseInt(new Date().getFullYear());
@@ -391,7 +391,7 @@ const quadrimestre = (dia, mes, ano, licaoDeVida, alma) => {
 
     let quadrimestreArray = [];
 
-    const actualDate = new Date().toLocaleDateString('en-GB').split('/').reverse().join('');
+    const actualDate = new Date().toISOString().split('-').join('');
     const birthdate = new Date().getFullYear().toString() + mes + dia;
     const isBirthdayPassedThisYear = birthdate < actualDate;
     let yearToCalculate = parseInt(new Date().getFullYear());
@@ -399,6 +399,10 @@ const quadrimestre = (dia, mes, ano, licaoDeVida, alma) => {
     if (!isBirthdayPassedThisYear) {
         yearToCalculate = yearToCalculate - 1;
     }
+
+    console.log("QUADRIMESTRE >>>>>>> ");
+    console.log("ACTUAL DATE: " + actualDate);
+    console.log("birthdate: " + birthdate);
 
     const actualBirthday = dia + "/" + mes + "/" + yearToCalculate;
     let quadrimesterOne = new Quadrimester();
@@ -473,7 +477,7 @@ const quadrimestre = (dia, mes, ano, licaoDeVida, alma) => {
 }
 
 const idade = (dia, mes, ano) => {
-    const actualDate = new Date().toLocaleDateString('en-GB').split('/').reverse().join('');
+    const actualDate = new Date().toISOString().split('-').join('');
     const birthdate = new Date().getFullYear().toString() + mes + dia;
     const isBirthdayPassedThisYear = birthdate < actualDate;
 
