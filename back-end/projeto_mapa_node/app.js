@@ -591,6 +591,9 @@ app.post("/calculo", function (req, res) {
     const resultadoQuadrimestre = letra.quadrimestre(dia, mes, ano, licaoVidaResumido, almaRetorno);
     const age = letra.idade(dia, mes, ano);
 
+    const personalMonth = letra.mesPessoal(parseInt(resultadoAnoPessoal[0]));
+
+
     //res.render('resumo' , {
     res.send({
         nome_teste: nome_tes,
@@ -642,7 +645,8 @@ app.post("/calculo", function (req, res) {
         //ano pessoal
         anoPessoal: resultadoAnoPessoal,
         numeros: retornoNumeros.toString(),
-        quadrimestres: resultadoQuadrimestre
+        quadrimestres: resultadoQuadrimestre,
+        mesPessoal: personalMonth
     })
     //res.send(alma[48].descrição);
 })
