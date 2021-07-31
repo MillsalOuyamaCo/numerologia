@@ -436,7 +436,8 @@ const quadrimestre = (dia, mes, ano, licaoDeVida, alma) => {
         var reducedBirthYear = reducedBirthYearArray[0]
     }
 
-    const resultOneArray = somarLetras([age + parseInt(reducedBirthYear)])
+    const calculoOne = age + parseInt(reducedBirthYear);
+    const resultOneArray = somarLetras(calculoOne.toString().split(''));
     const resultOne = resultOneArray[0] + "/" + resultOneArray[1];
     quadrimesterOne = new Quadrimester(actualBirthday, finalDateOne.toLocaleDateString(), resultOne);
 
@@ -451,7 +452,8 @@ const quadrimestre = (dia, mes, ano, licaoDeVida, alma) => {
     console.log("initial date two: " + initialDateTwo);
     console.log("final date two: " + finalDateTwo);
     finalDateTwo.setMonth(finalDateTwo.getMonth() + 4, finalDateTwo.getDate());
-    const resultTwoArray = somarLetras([licaoDeVida + parseInt(reducedBirthYear)]);
+    const calculoTwo = licaoDeVida + parseInt(reducedBirthYear);
+    const resultTwoArray = somarLetras(calculoTwo.toString().split(''));
     const resultTwo = resultTwoArray[0] + "/" + resultTwoArray[1];
 
     let quadrimesterTwo = new Quadrimester(initialDateTwo.toLocaleDateString(), finalDateTwo.toLocaleDateString(), resultTwo);
@@ -464,7 +466,10 @@ const quadrimestre = (dia, mes, ano, licaoDeVida, alma) => {
     const finalDateThree = new Date(intialDateThree);
     finalDateThree.setMonth(finalDateThree.getMonth() + 4, finalDateThree.getDate());
     console.log("ALMA DENTRO DE QUADRIMESTRE: " + alma);
-    let resultThreeArray = somarLetras([alma[0] + parseInt(reducedBirthYear)]);
+    console.log("ALMA[0] DENTRO DE QUADRIMESTRE: " + alma[0]);
+    let calculoThree = alma[0] + parseInt(reducedBirthYear)
+    let resultThreeArray = somarLetras(calculoThree.toString().split(''));
+    
     let resultThree = resultThreeArray[0] + "/" + resultThreeArray[1];
 
     let quadrimesterThree = new Quadrimester(intialDateThree.toLocaleDateString(), finalDateThree.toLocaleDateString(), resultThree);
