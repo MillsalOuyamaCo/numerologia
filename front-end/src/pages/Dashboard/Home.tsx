@@ -61,7 +61,8 @@ function Home() {
         numeroCarmicoUm: "",
         numeroCarmicoDois: "",
         numeroCarmicoTres: "",
-        numeroCarmicoQuatro: ""
+        numeroCarmicoQuatro: "",
+        ausenciaCarmica: []
     };
 
     const Map: Mapa = {

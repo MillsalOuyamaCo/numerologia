@@ -49,7 +49,8 @@ export interface Calculo {
     numeroCarmicoUm: string,
     numeroCarmicoDois: string,
     numeroCarmicoTres: string,
-    numeroCarmicoQuatro: string
+    numeroCarmicoQuatro: string,
+    ausenciaCarmica: string[]
 }
 
 export interface RepeticaoNumero {
@@ -97,6 +98,12 @@ const CalculoResult: React.FC<CalculoProps> = ({ calculo }) => {
                         calculo.numeroCarmicoQuatro !== "" && calculo.numeroCarmicoQuatro !== undefined &&
                         <Card.Text><strong className="font-weight-bold">Número Carmico Quatro: </strong> {calculo.numeroCarmicoQuatro}</Card.Text>
                     }
+
+                    <Card.Text><strong className="font-weight-bold">Ausência Carmica: </strong>
+                        {calculo.ausenciaCarmica.map((value, index) => {
+                            return (value + ", ");
+                        })}
+                    </Card.Text>
                 </Card.Body>
             </Card>
             <br />
