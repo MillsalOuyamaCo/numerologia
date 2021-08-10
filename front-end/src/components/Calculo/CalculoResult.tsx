@@ -4,57 +4,42 @@ import React from 'react';
 import {
     Card,
     Container,
+    Row,
+    Col
 } from 'react-bootstrap';
 
-export interface Calculo {
-    nome_teste: string,
-    alma: string,
-    aparencia: string,
-    destino: string,
-    primeiroCiclo: string,
-    segundoCiclo: string,
-    terceiroCiclo: string,
-    primeiraVogal: string,
-    licaoVida: string,
-    dia_natalicio: string,
-    data_nasc: string,
-    poder: string,
-    //repeticaoNumero: RepeticaoNumero,
-    temperamento: string,
-    temperamentoNumero: string,
-    vibracao: string,
-    realizacaoDt1: string,
-    realizacaoDt2: string,
-    realizacaoDt3: string,
-    realizacaoDt4: string,
-    realizacaoDt5: string,
-    realizacaoDt6: string,
-    realizacaoDt7: string,
-    realizacaoUm: string,
-    realizacaoDois: string,
-    realizacaoTres: string,
-    realizacaoQuatro: string,
-    desafioDt1: string,
-    desafioDt2: string,
-    desafioDt3: string,
-    desafioDt4: string,
-    desafioDt5: string,
-    desafioDt6: string,
-    desafioDt7: string,
-    desafioUm: string,
-    desafioDois: string,
-    desafioTres: string,
-    desafioQuatro: string,
-    numeros: string,
-    numeroCarmicoUm: string,
-    numeroCarmicoDois: string,
-    numeroCarmicoTres: string,
-    numeroCarmicoQuatro: string,
-    ausenciaCarmica: string[]
+export interface CalculoObject {
+    id: string;
+    value: string;
+    description: string;
 }
 
-export interface RepeticaoNumero {
-    [index: number]: number
+export interface CalculoObjectArray {
+    list: CalculoObject[];
+    descrption: string;
+}
+
+export interface Calculo {
+    name: CalculoObject,
+    soul: CalculoObject,
+    appearance: CalculoObject,
+    destiny: CalculoObject,
+    lifeCycle: CalculoObjectArray,
+    firstVowel: CalculoObject,
+    lifeLesson: CalculoObject,
+    birthDay: CalculoObject,
+    birthdate: CalculoObject,
+    power: CalculoObject,
+    temperament: CalculoObject,
+    vibration: CalculoObject,
+    spiersAndRealization: CalculoObjectArray,
+    challenge: CalculoObjectArray,
+    karmicNumber: CalculoObjectArray,
+    karmicAbsences: CalculoObjectArray,
+    personalYear: CalculoObject,
+    quadrimesters: CalculoObjectArray,
+    personalMonth: CalculoObject,
+    personalDay: CalculoObject
 }
 
 interface CalculoProps {
@@ -64,70 +49,75 @@ interface CalculoProps {
 const CalculoResult: React.FC<CalculoProps> = ({ calculo }) => {
     return (
         <Container className='mt-5'>
-            <Card>
-                <Card.Body>
-                    <h2>Resultado</h2>
-                    <br />
-                    <Card.Text><strong className="font-weight-bold">Nome: </strong> {calculo.nome_teste}</Card.Text>
-                    <Card.Text><strong className="font-weight-bold">Data Aniversário: </strong> {calculo.data_nasc}</Card.Text>
-                    <Card.Text><strong className="font-weight-bold">Vibração: </strong> {calculo.vibracao}</Card.Text>
-                    <Card.Text><strong className="font-weight-bold">Temperamento: </strong> {calculo.temperamentoNumero} - {calculo.temperamento}</Card.Text>
-                    <Card.Text><strong className="font-weight-bold">Alma: </strong> {calculo.alma}</Card.Text>
-                    <Card.Text><strong className="font-weight-bold">Aparência: </strong> {calculo.aparencia}</Card.Text>
-                    <Card.Text><strong className="font-weight-bold">Destino: </strong> {calculo.destino}</Card.Text>
-                    <Card.Text><strong className="font-weight-bold">Primeira Vogal: </strong> {calculo.primeiraVogal}</Card.Text>
-                    <Card.Text><strong className="font-weight-bold"> Data Natalicia / Lição de Vida: </strong> {calculo.licaoVida}</Card.Text>
-                    <Card.Text><strong className="font-weight-bold">Dia Natalicio: </strong> {calculo.dia_natalicio}</Card.Text>
-                    <Card.Text><strong className="font-weight-bold">Poder: </strong> {calculo.poder}</Card.Text>
-                    <Card.Text><strong className="font-weight-bold">1º Ciclo: </strong> {calculo.primeiroCiclo}</Card.Text>
-                    <Card.Text><strong className="font-weight-bold">2º Ciclo: </strong> {calculo.segundoCiclo}</Card.Text>
-                    <Card.Text><strong className="font-weight-bold">3º Ciclo: </strong> {calculo.terceiroCiclo}</Card.Text>
-                    {
-                        calculo.numeroCarmicoUm !== "" && calculo.numeroCarmicoUm !== undefined &&
-                        <Card.Text><strong className="font-weight-bold">Número Carmico Um: </strong> {calculo.numeroCarmicoUm}</Card.Text>
-                    }
-                    {
-                        calculo.numeroCarmicoDois !== "" && calculo.numeroCarmicoDois !== undefined &&
-                        <Card.Text><strong className="font-weight-bold">Número Carmico Dois: </strong> {calculo.numeroCarmicoDois}</Card.Text>
-                    }
-                    {
-                        calculo.numeroCarmicoTres !== "" && calculo.numeroCarmicoTres !== undefined &&
-                        <Card.Text><strong className="font-weight-bold">Número Carmico Três: </strong> {calculo.numeroCarmicoTres}</Card.Text>
-                    }
-                    {
-                        calculo.numeroCarmicoQuatro !== "" && calculo.numeroCarmicoQuatro !== undefined &&
-                        <Card.Text><strong className="font-weight-bold">Número Carmico Quatro: </strong> {calculo.numeroCarmicoQuatro}</Card.Text>
-                    }
+            <Row>
+                <Col>
+                    <Card>
+                        <Card.Body>
+                            <h2>Resultado</h2>
+                            <br />
+                            <Card.Text><strong className="font-weight-bold">Nome: </strong> {calculo.name.value}</Card.Text>
+                            <Card.Text><strong className="font-weight-bold">Data Aniversário: </strong> {calculo.birthdate.value}</Card.Text>
+                            <Card.Text><strong className="font-weight-bold">Vibração: </strong> {calculo.vibration.value}</Card.Text>
+                            <Card.Text><strong className="font-weight-bold">Temperamento: </strong> {calculo.temperament.value}</Card.Text>
+                            <Card.Text><strong className="font-weight-bold">Alma: </strong> {calculo.soul.value}</Card.Text>
+                            <Card.Text><strong className="font-weight-bold">Aparência: </strong> {calculo.appearance.value}</Card.Text>
+                            <Card.Text><strong className="font-weight-bold">Destino: </strong> {calculo.destiny.value}</Card.Text>
+                            <Card.Text><strong className="font-weight-bold">Primeira Vogal: </strong> {calculo.firstVowel.value}</Card.Text>
+                            <Card.Text><strong className="font-weight-bold">Data Natalicia / Lição de Vida: </strong> {calculo.lifeLesson.value}</Card.Text>
+                            <Card.Text><strong className="font-weight-bold">Dia Natalicio: </strong> {calculo.birthDay.value}</Card.Text>
+                            <Card.Text><strong className="font-weight-bold">Poder: </strong> {calculo.power.value}</Card.Text>
+                            {
+                                calculo.lifeCycle.list.map((lifeCycle, index) => {
+                                    return (
+                                        <Card.Text key={lifeCycle.id}><strong className="font-weight-bold">{index + 1}º Ciclo: </strong> {lifeCycle.value}</Card.Text>
+                                    );
+                                })
+                            }
+                            {
+                                calculo.karmicNumber.list.map((karmicNumber, index) => {
+                                    return (
+                                        <Card.Text key={karmicNumber.id}><strong className="font-weight-bold">Número Carmico {index + 1}: </strong> {karmicNumber.value}</Card.Text>
+                                    );
+                                })
+                            }
 
-                    <Card.Text><strong className="font-weight-bold">Ausência Carmica: </strong>
-                        {calculo.ausenciaCarmica.map((value, index) => {
-                            return (value + ", ");
-                        })}
-                    </Card.Text>
-                </Card.Body>
-            </Card>
+                            <Card.Text><strong className="font-weight-bold">Ausência Carmica: </strong>
+                                {calculo.karmicAbsences.list.map((karmicAbsences, index) => {
+                                    return (karmicAbsences.value + ", ");
+                                })}
+                            </Card.Text>
+                        </Card.Body>
+                    </Card>
+                </Col>
+
+                <Col>
+                    <Card>
+                        <Card.Body>
+                            <h2>Realizações e Desafios</h2>
+                            <br />
+                            <h4>Realizações</h4>
+                            {
+                                calculo.spiersAndRealization.list.map((realizations, index) => {
+                                    return (
+                                        <Card.Text>{realizations.value}</Card.Text>
+                                    );
+                                })
+                            }
+                            <br />
+                            <h4>Desafios</h4>
+                            {
+                                calculo.challenge.list.map((challenge, index) => {
+                                    return (
+                                        <Card.Text>{challenge.value}</Card.Text>
+                                    );
+                                })
+                            }
+                        </Card.Body>
+                    </Card>
+                </Col>
+            </Row>
             <br />
-
-            <Card>
-                <Card.Body>
-                    <h2>Realizações e Desafios</h2>
-                    <br />
-                    <h4>Realizações</h4>
-                    <Card.Text><strong className="font-weight-bold">Dos: </strong> {calculo.realizacaoDt1} <strong className="font-weight-bold">aos: </strong> {calculo.realizacaoDt2} <strong className="font-weight-bold">Anos = </strong> {calculo.realizacaoUm}</Card.Text>
-                    <Card.Text><strong className="font-weight-bold">Dos: </strong> {calculo.realizacaoDt3} <strong className="font-weight-bold">aos: </strong> {calculo.realizacaoDt4} <strong className="font-weight-bold">Anos = </strong> {calculo.realizacaoDois}</Card.Text>
-                    <Card.Text><strong className="font-weight-bold">Dos: </strong> {calculo.realizacaoDt5} <strong className="font-weight-bold">aos: </strong> {calculo.realizacaoDt6} <strong className="font-weight-bold">Anos = </strong> {calculo.realizacaoTres}</Card.Text>
-                    <Card.Text><strong className="font-weight-bold">Dos: </strong> {calculo.realizacaoDt7} <strong className="font-weight-bold">em diante </strong> {calculo.realizacaoQuatro}</Card.Text>
-                    <br />
-                    <h4>Desafios</h4>
-                    <Card.Text><strong className="font-weight-bold">Dos: </strong> {calculo.desafioDt1} <strong className="font-weight-bold">aos: </strong> {calculo.desafioDt2} <strong className="font-weight-bold">Anos = </strong> {calculo.desafioUm}</Card.Text>
-                    <Card.Text><strong className="font-weight-bold">Dos: </strong> {calculo.desafioDt3} <strong className="font-weight-bold">aos: </strong> {calculo.desafioDt4} <strong className="font-weight-bold">Anos = </strong> {calculo.desafioDois}</Card.Text>
-                    <Card.Text><strong className="font-weight-bold">Dos: </strong> {calculo.desafioDt5} <strong className="font-weight-bold">aos: </strong> {calculo.desafioDt6} <strong className="font-weight-bold">Anos = </strong> {calculo.desafioTres}</Card.Text>
-                    <Card.Text><strong className="font-weight-bold">Dos: </strong> {calculo.desafioDt7} <strong className="font-weight-bold">em diante </strong> {calculo.desafioQuatro}</Card.Text>
-                </Card.Body>
-            </Card>
-
         </Container>
-
     );
 }
 

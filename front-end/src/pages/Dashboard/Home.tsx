@@ -14,55 +14,43 @@ import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import numerologiaApi from '../../services/numerologiaApi';
 
 //components
-import CalculoForm, { Calculo } from '../../components/Calculo/CalculoResult';
+import CalculoForm, { Calculo, CalculoObject, CalculoObjectArray } from '../../components/Calculo/CalculoResult';
 import MapaResult, { Mapa } from '../../components/Mapa/MapaResult';
 
 
 function Home() {
+    const CalculoObjectResponse: CalculoObject = {
+        id: "",
+        value: "",
+        description: ""
+    }
+    
+    const CalculoObjectArrayResponse: CalculoObjectArray = {
+        list: [],
+        descrption: ""
+    }
+    
     const CalculoResponse: Calculo = {
-        nome_teste: "",
-        alma: "",
-        aparencia: "",
-        destino: "",
-        primeiroCiclo: "",
-        segundoCiclo: "",
-        terceiroCiclo: "",
-        primeiraVogal: "",
-        licaoVida: "",
-        dia_natalicio: "",
-        data_nasc: "",
-        poder: "",
-        temperamento: "",
-        temperamentoNumero: "",
-        vibracao: "",
-        realizacaoDt1: "",
-        realizacaoDt2: "",
-        realizacaoDt3: "",
-        realizacaoDt4: "",
-        realizacaoDt5: "",
-        realizacaoDt6: "",
-        realizacaoDt7: "",
-        realizacaoUm: "",
-        realizacaoDois: "",
-        realizacaoTres: "",
-        realizacaoQuatro: "",
-        desafioDt1: "",
-        desafioDt2: "",
-        desafioDt3: "",
-        desafioDt4: "",
-        desafioDt5: "",
-        desafioDt6: "",
-        desafioDt7: "",
-        desafioUm: "",
-        desafioDois: "",
-        desafioTres: "",
-        desafioQuatro: "",
-        numeros: "",
-        numeroCarmicoUm: "",
-        numeroCarmicoDois: "",
-        numeroCarmicoTres: "",
-        numeroCarmicoQuatro: "",
-        ausenciaCarmica: []
+        name: CalculoObjectResponse,
+        soul: CalculoObjectResponse,
+        appearance: CalculoObjectResponse,
+        destiny: CalculoObjectResponse,
+        lifeCycle: CalculoObjectArrayResponse,
+        firstVowel: CalculoObjectResponse,
+        lifeLesson: CalculoObjectResponse,
+        birthDay: CalculoObjectResponse,
+        birthdate: CalculoObjectResponse,
+        power: CalculoObjectResponse,
+        temperament: CalculoObjectResponse,
+        vibration: CalculoObjectResponse,
+        spiersAndRealization: CalculoObjectArrayResponse,
+        challenge: CalculoObjectArrayResponse,
+        karmicNumber: CalculoObjectArrayResponse,
+        karmicAbsences: CalculoObjectArrayResponse,
+        personalYear: CalculoObjectResponse,
+        quadrimesters: CalculoObjectArrayResponse,
+        personalMonth: CalculoObjectResponse,
+        personalDay: CalculoObjectResponse
     };
 
     const Map: Mapa = {
@@ -143,9 +131,12 @@ function Home() {
         console.log(birthDate);
         console.log(name);
 
-        numerologiaApi.post('calculo', {
-            nome_mil: name,
-            data_nasc: birthDate
+        numerologiaApi.get('calculate', {
+            params: { 
+                name: name,
+                birthdate: birthDate,
+                deep: true
+            }
         })
             .then(response => {
                 setNumerologyResponse(response.data);
@@ -157,48 +148,22 @@ function Home() {
 
     const generateMap = () => {
         numerologiaApi.post('novoMapa', {
-            nome_teste: numerologyResponse.nome_teste,
-            alma: numerologyResponse.alma,
-            aparencia: numerologyResponse.aparencia,
-            destino: numerologyResponse.destino,
-            primeiroCiclo: numerologyResponse.primeiroCiclo,
-            segundoCiclo: numerologyResponse.segundoCiclo,
-            terceiroCiclo: numerologyResponse.terceiroCiclo,
-            primeiraVogal: numerologyResponse.primeiraVogal,
-            licaoVida: numerologyResponse.licaoVida,
-            dia_natalicio: numerologyResponse.dia_natalicio,
-            data_nasc: numerologyResponse.data_nasc,
-            poder: numerologyResponse.poder,
-            temperamento: numerologyResponse.temperamento,
-            temperamentoNumero: numerologyResponse.temperamentoNumero,
-            vibracao: numerologyResponse.vibracao,
-            realizacaoDt1: numerologyResponse.realizacaoDt1,
-            realizacaoDt2: numerologyResponse.realizacaoDt2,
-            realizacaoDt3: numerologyResponse.realizacaoDt3,
-            realizacaoDt4: numerologyResponse.realizacaoDt4,
-            realizacaoDt5: numerologyResponse.realizacaoDt5,
-            realizacaoDt6: numerologyResponse.realizacaoDt6,
-            realizacaoDt7: numerologyResponse.realizacaoDt7,
-            realizacaoUm: numerologyResponse.realizacaoUm,
-            realizacaoDois: numerologyResponse.realizacaoDois,
-            realizacaoTres: numerologyResponse.realizacaoTres,
-            realizacaoQuatro: numerologyResponse.realizacaoQuatro,
-            desafioDt1: numerologyResponse.desafioDt1,
-            desafioDt2: numerologyResponse.desafioDt2,
-            desafioDt3: numerologyResponse.desafioDt3,
-            desafioDt4: numerologyResponse.desafioDt4,
-            desafioDt5: numerologyResponse.desafioDt5,
-            desafioDt6: numerologyResponse.desafioDt6,
-            desafioDt7: numerologyResponse.desafioDt7,
-            desafioUm: numerologyResponse.desafioUm,
-            desafioDois: numerologyResponse.desafioDois,
-            desafioTres: numerologyResponse.desafioTres,
-            desafioQuatro: numerologyResponse.desafioQuatro,
-            numeros: numerologyResponse.numeros,
-            numeroCarmicoUm: numerologyResponse.numeroCarmicoUm,
-            numeroCarmicoDois: numerologyResponse.numeroCarmicoDois,
-            numeroCarmicoTres: numerologyResponse.numeroCarmicoTres,
-            numeroCarmicoQuatro: numerologyResponse.numeroCarmicoQuatro
+            nome_teste: numerologyResponse.name.id,
+            alma: numerologyResponse.soul.id,
+            aparencia: numerologyResponse.appearance.id,
+            destino: numerologyResponse.destiny.id,
+            lifeCycle: numerologyResponse.lifeCycle.list.map(ls => ls.id),
+            primeiraVogal: numerologyResponse.firstVowel.id,
+            licaoVida: numerologyResponse.lifeLesson.id,
+            dia_natalicio: numerologyResponse.birthDay.id,
+            data_nasc: numerologyResponse.birthdate.id,
+            poder: numerologyResponse.power.id,
+            temperamento: numerologyResponse.temperament.id,
+            vibracao: numerologyResponse.vibration.id,
+            realizacao: numerologyResponse.spiersAndRealization.list.map(sr => sr.id),
+            challenge: numerologyResponse.challenge.list.map(c => c.id),
+            numerosKarmicos: numerologyResponse.karmicNumber.list.map(k => k.id),
+            karmicAbsences: numerologyResponse.karmicAbsences.list.map(ka => ka.id),
         }).then(response => {
             setMapResponse(response.data);
         })
@@ -213,7 +178,7 @@ function Home() {
             {console.log(mapResponse)}
             <Navbar expand="lg" variant="light" bg="light">
                 <Container>
-                    <Navbar.Brand href="#home">Navbar with text</Navbar.Brand>
+                    <Navbar.Brand href="#home">Mapa Numerológico</Navbar.Brand>
                     <Navbar.Toggle />
                     <Navbar.Collapse className="justify-content-end">
                         <Navbar.Text>
@@ -259,7 +224,7 @@ function Home() {
             </Container>
 
             {
-                numerologyResponse.nome_teste !== "" &&
+                numerologyResponse.name.value !== "" &&
                 <>
                     <CalculoForm
                         calculo={numerologyResponse}
