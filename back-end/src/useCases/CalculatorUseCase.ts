@@ -1,5 +1,5 @@
 import Calculator from "../business/Calculator";
-import ICalculatorUseCase from "../interfaces/ICalculatorUseCase";
+import ICalculatorUseCase from "../interfaces/useCases/ICalculatorUseCase";
 import TemperamentPlan from "../model/core/TemperamentPlan";
 import LettersAsNumbersList from "../model/enum/LettersAsNumbersListEnum";
 import CalculusResponse from "../model/response/CalculusResponse";
@@ -26,7 +26,7 @@ export default class CalculatorUseCase implements ICalculatorUseCase {
     const powerResult = this.calculator.calculatePower(destinyResult.getReducedNumber(), lifeLessonResult.getReducedNumber());
     const temperamentPlanResult = this.calculator.calculateTemperamentPlan(name);
     const karmicAbsenceResult = this.calculator.calculateKarmicAbscence(temperamentPlanResult);
-    const karmicNumbersResult = this.calculator.calculateKarmicNumbers(soulResult, appearanceResult, destinyResult, lifeLessonResult);
+    const karmicNumbersResult = this.calculator.calculateKarmicNumbers(soulResult, appearanceResult, destinyResult);
     const lifeCyclesResult = this.calculator.calculateLifeCycle(birthDate);
     const spiersAndRealizationsResult = this.calculator.calculateSpiersAndRealizations(birthDate, lifeLessonResult);
     const challengesResult = this.calculator.calculateChallenges(birthDate, lifeLessonResult);

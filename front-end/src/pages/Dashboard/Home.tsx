@@ -15,14 +15,19 @@ import numerologiaApi from '../../services/numerologiaApi';
 
 //components
 import CalculoForm, { Calculo, CalculoObject, CalculoObjectArray } from '../../components/Calculo/CalculoResult';
-import MapaResult, { Mapa } from '../../components/Mapa/MapaResult';
+import MapaResult from '../../components/Mapa/MapaResult';
+import MapKarmicNumberRequest from '../../components/model/requests/MapKarmicNumberRequest';
+import MapRequest from '../../components/model/requests/MapRequest';
+import IData from '../../components/model/responses/IData';
 
 
 function Home() {
     const CalculoObjectResponse: CalculoObject = {
         id: "",
         value: "",
-        description: ""
+        description: "",
+        startValue: "",
+        finalValue: ""
     }
     
     const CalculoObjectArrayResponse: CalculoObjectArray = {
@@ -53,78 +58,15 @@ function Home() {
         personalDay: CalculoObjectResponse
     };
 
-    const Map: Mapa = {
-        numero_vibracao: "",
-        descricao_vibracao: "",
-        numero_alma: "",
-        descricao_alma: "",
-        numero_aparencia: "",
-        descricao_aparencia: "",
-        numero_destino: "",
-        descricao_destino: "",
-        numero_licaoVida: "",
-        descricao_licaoVida: "",
-        numero_diaNatalicio: "",
-        descricao_diaNatalicio: "",
-        numero_carmicaUm: "",
-        descricao_carmicaUm: "",
-        numero_carmicaDois: "",
-        descricao_carmicaDois: "",
-        numero_carmicaTres: "",
-        descricao_carmicaTres: "",
-        numero_carmicaQuatro: "",
-        descricao_carmicaQuatro: "",
-        numero_vogal: "",
-        descricao_vogal: "",
-        numero_formativo: "",
-        descricao_formativo: "",
-        numero_produtivo: "",
-        descricao_produtivo: "",
-        numero_colheita: "",
-        descricao_colheita: "",
-        desafioDt1: "",
-        desafioDt2: "",
-        desafioDt3: "",
-        desafioDt4: "",
-        desafioDt5: "",
-        desafioDt6: "",
-        desafioDt7: "",
-        numero_desafioUm: "",
-        descricao_desafioUm: "",
-        numero_desafioDois: 1,
-        descricao_desafioDois: "",
-        numero_desafioTres: "",
-        descricao_desafioTres: "",
-        numero_desafioQuatro: "",
-        descricao_desafioQuatro: "",
-        realizacaoDt1: "",
-        realizacaoDt2: "",
-        realizacaoDt3: "",
-        realizacaoDt4: "",
-        realizacaoDt5: "",
-        realizacaoDt6: "",
-        realizacaoDt7: "",
-        numero_realizacaoUm: "",
-        descricao_realizacaoUm: "",
-        numero_realizacaoDois: "",
-        descricao_realizacaoDois: "",
-        numero_realizacaoTres: "",
-        descricao_realizacaoTres: "",
-        numero_realizacaoQuatro: "",
-        descricao_realizacaoQuatro: "",
-        numero_poder: "",
-        descricao_poder: "",
-        numero_ano_pessoal: "",
-        descricao_ano_pessoal: "",
-        numero_temperamento: "",
-        descricao_temperamento: ""
-    }
+    const Map: IData = {
+        data: []
+    };
 
     const [birthDate, setBirthDate] = useState("");
     const [name, setName] = useState("");
 
     const [numerologyResponse, setNumerologyResponse] = useState<Calculo>(CalculoResponse);
-    const [mapResponse, setMapResponse] = useState<Mapa>(Map);
+    const [mapResponse, setMapResponse] = useState<IData>(Map);
 
     const handleSubmit = (e: FormEvent) => {
         e.preventDefault();
@@ -147,25 +89,39 @@ function Home() {
     }
 
     const generateMap = () => {
-        numerologiaApi.post('novoMapa', {
-            nome_teste: numerologyResponse.name.id,
-            alma: numerologyResponse.soul.id,
-            aparencia: numerologyResponse.appearance.id,
-            destino: numerologyResponse.destiny.id,
-            lifeCycle: numerologyResponse.lifeCycle.list.map(ls => ls.id),
-            primeiraVogal: numerologyResponse.firstVowel.id,
-            licaoVida: numerologyResponse.lifeLesson.id,
-            dia_natalicio: numerologyResponse.birthDay.id,
-            data_nasc: numerologyResponse.birthdate.id,
-            poder: numerologyResponse.power.id,
-            temperamento: numerologyResponse.temperament.id,
-            vibracao: numerologyResponse.vibration.id,
-            realizacao: numerologyResponse.spiersAndRealization.list.map(sr => sr.id),
-            challenge: numerologyResponse.challenge.list.map(c => c.id),
-            numerosKarmicos: numerologyResponse.karmicNumber.list.map(k => k.id),
-            karmicAbsences: numerologyResponse.karmicAbsences.list.map(ka => ka.id),
+        numerologiaApi.post('generate-map', {
+            soulId: numerologyResponse.soul.id,
+            appearanceId: numerologyResponse.appearance.id,
+            destinyId: numerologyResponse.destiny.id,
+            lifeCycleListIds: numerologyResponse.lifeCycle.list.map(ls => {
+                return new MapRequest(ls.id, ls.startValue, ls.finalValue);
+            }),
+            firstVowelId: numerologyResponse.firstVowel.id,
+            lifeLessonId: numerologyResponse.lifeLesson.id,
+            birthDayId: numerologyResponse.birthDay.id,
+            birthdateId: numerologyResponse.birthdate.id,
+            powerId: numerologyResponse.power.id,
+            personalYearId: numerologyResponse.personalYear.id,
+            personalMonthId: numerologyResponse.personalMonth.id,
+            personalDayId: numerologyResponse.personalDay.id,
+            quadrimesterListIds: numerologyResponse.quadrimesters.list.map(q => {
+                return new MapRequest(q.id, q.startValue, q.finalValue);
+            }),
+            temperamentId: numerologyResponse.temperament.id,
+            vibrationId: numerologyResponse.vibration.id,
+            spiersAndRealizationListIds: numerologyResponse.spiersAndRealization.list.map(sr => {
+                return new MapRequest(sr.id, sr.startValue, sr.finalValue);
+            }),
+            challengeListIds: numerologyResponse.challenge.list.map(c => {
+                return new MapRequest(c.id, c.startValue, c.finalValue);
+            }),
+            karmicNumberListIds: numerologyResponse.karmicNumber.list.map(k => {
+                return new MapKarmicNumberRequest(k.id, k.description);
+            }),
+            karmicAbsencesListIds: numerologyResponse.karmicAbsences.list.map(ka => ka.id),
         }).then(response => {
             setMapResponse(response.data);
+            console.log("SUCESSO CHAMANDO MAPA: " + JSON.stringify(response.data));
         })
             .catch(error => {
                 console.log("Erro ao gerar mapa: " + error);
@@ -247,9 +203,9 @@ function Home() {
             }
 
             {
-                mapResponse.numero_vibracao !== "" && mapResponse.numero_vibracao !== "" &&
+                mapResponse.data.length > 0 && 
                 <MapaResult
-                    mapa={mapResponse}
+                    mapResponse={mapResponse.data}
                 />
             }
 

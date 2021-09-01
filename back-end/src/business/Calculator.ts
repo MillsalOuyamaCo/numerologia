@@ -96,7 +96,7 @@ export default class Calculator {
         let nameEachLetter = letters.trim().split('');
         nameEachLetter.forEach((letter) => {
             let letterAsNumber = letterAsNumbersEnum.list.find(letterAsNumber => letterAsNumber.Letter == letter);
-            if (letterAsNumber != undefined) {
+            if (letterAsNumber !== undefined) {
                 numberForLettersArray.push(letterAsNumber.Value);
             }
         });
@@ -139,7 +139,7 @@ export default class Calculator {
         let originalNumber = this.calculateLettersAsNumbers(nameConsonants.join());
         let reducedNumber = this.calculateReducedNumber(originalNumber, false);
 
-        var result = new CoreObjectCalculus(originalNumber, reducedNumber);
+        var result = new CoreObjectCalculus(reducedNumber, reducedNumber);
 
         return result;
     }
@@ -158,14 +158,14 @@ export default class Calculator {
         let nameEachLetter = name.trim().split('');
         nameEachLetter.forEach((letter) => {
             let letterAsNumber = letterAsNumbersEnum.list.find(letterAsNumber => letterAsNumber.Letter == letter);
-            if (letterAsNumber != undefined) {
+            if (letterAsNumber !== undefined) {
                 numberForLettersArray.push(letterAsNumber.Value);
             }
         });
 
         numberForLettersArray.forEach(number => {
             var numberFound = tremperamentPlanArray.list.find(tpNumber => tpNumber.NumberValue === number);
-            if(numberFound != undefined){
+            if(numberFound !== undefined){
                 numberFound.Counter++
             }
         });
@@ -218,7 +218,7 @@ export default class Calculator {
         return temperamentPlan;
     }
 
-    public calculateKarmicNumbers = (soul: CoreObjectCalculus, appearance: CoreObjectCalculus, destiny: CoreObjectCalculus, lifeLesson: CoreObjectCalculus): KarmicNumber[] => {
+    public calculateKarmicNumbers = (soul: CoreObjectCalculus, appearance: CoreObjectCalculus, destiny: CoreObjectCalculus): KarmicNumber[] => {
         let karmicSoul = this.checkIfIsKarmic(soul.getOriginalNumber(), "Alma");
         let karmicAppearance = this.checkIfIsKarmic(appearance.getOriginalNumber(), "Aparência");
         let karmicDestiny = this.checkIfIsKarmic(destiny.getOriginalNumber(), "Destino");
@@ -260,7 +260,7 @@ export default class Calculator {
 
         let lifeCycles = [LifePeriodObject.constructorNumber(reducedMonth, 0, 28), 
             LifePeriodObject. constructorNumber(reducedDay, 29, 56), 
-            LifePeriodObject.constructorNumber(reducedYear, 57, 999)];
+            LifePeriodObject.constructorNumberString(reducedYear, 57, "em diante")];
 
         return lifeCycles;
     }

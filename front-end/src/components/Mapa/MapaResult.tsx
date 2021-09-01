@@ -5,8 +5,9 @@ import {
     Card,
     Container,
 } from 'react-bootstrap';
+import IMapResponse from '../model/responses/IMapResponse';
 
-export interface Mapa {
+export interface Map {
     numero_vibracao: string,
     descricao_vibracao: string,
     numero_alma: string,
@@ -74,13 +75,66 @@ export interface Mapa {
 }
 
 interface MapaProps {
-    mapa: Mapa
+    mapResponse: IMapResponse[]
 }
 
-const MapaResult: React.FC<MapaProps> = ({ mapa }) => {
+const MapaResult: React.FC<MapaProps> = ({ mapResponse }) => {
     return (
         <Container className='mt-5'>
-            <Card>
+            {
+                mapResponse.map((mapItem, index) => {
+                    return (
+                        <>
+                            <Card key={index}>
+                                <Card.Body>
+                                    <h2>{mapItem.title}</h2>
+                                    {
+                                        mapItem.subTitle.map((st, index) => {
+                                            return (
+                                                <h5 key={index}>
+                                                    {st}
+                                                </h5>
+                                            );
+                                        })
+                                    }
+                                    <br />
+                                    {
+                                        mapItem.itemValueFirstPart !== "" &&
+                                        mapItem.itemValueSecondPart !== "" &&
+                                        mapItem.description !== "" &&
+                                        <>
+                                            <Card.Text>
+                                                <strong className="font-weight-bold">{mapItem.itemValueFirstPart}</strong> {mapItem.itemValueSecondPart}
+                                            </Card.Text>
+                                            <Card.Text>
+                                                {mapItem.description}
+                                            </Card.Text>
+                                        </>
+                                    }
+                                    {
+                                        mapItem.mapSubItemList.length > 0 &&
+                                        mapItem.mapSubItemList.map((subItem, index) => {
+                                            return (
+                                                <>
+                                                    <Card.Text>
+                                                        <strong className="font-weight-bold">{subItem.title}</strong>                                                </Card.Text>
+                                                    <Card.Text>
+                                                        {subItem.description}
+                                                    </Card.Text>
+                                                </>
+                                            );
+                                        })
+                                    }
+
+                                </Card.Body>
+                            </Card>
+                            <br />
+                        </>
+                    );
+                })
+            }
+
+            {/* <Card>
                 <Card.Img variant="top" src="holder.js/100px180" />
                 <Card.Body>
                     <h2>VIBRAÇÃO</h2>
@@ -332,7 +386,7 @@ const MapaResult: React.FC<MapaProps> = ({ mapa }) => {
                     <br />
                     <Card.Text><strong className="font-weight-bold">Sugestão de Assinatura: </strong> {mapa.numero_ano_pessoal} </Card.Text>
                 </Card.Body>
-            </Card>
+            </Card> */}
         </Container>
     );
 }

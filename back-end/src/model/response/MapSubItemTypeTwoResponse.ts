@@ -1,11 +1,11 @@
-export default class MapSubItemTypeTwoResponse {
-    private Title: string;
-    private Description: string;
+export default class MapSubItemResponse {
+    private title: string;
+    private description: string;
 
 
 	constructor(Title: string, Description: string) {
-		this.Title = Title;
-		this.Description = Description;
+		this.title = Title;
+		this.description = Description;
 	}
 
 
@@ -14,7 +14,7 @@ export default class MapSubItemTypeTwoResponse {
      * @return {string}
      */
 	public getTitle(): string {
-		return this.Title;
+		return this.title;
 	}
 
     /**
@@ -22,7 +22,7 @@ export default class MapSubItemTypeTwoResponse {
      * @param {string} value
      */
 	public setTitle(value: string) {
-		this.Title = value;
+		this.title = value;
 	}
 
     /**
@@ -30,7 +30,7 @@ export default class MapSubItemTypeTwoResponse {
      * @return {string}
      */
 	public getDescription(): string {
-		return this.Description;
+		return this.description;
 	}
 
     /**
@@ -38,7 +38,7 @@ export default class MapSubItemTypeTwoResponse {
      * @param {string} value
      */
 	public setDescription(value: string) {
-		this.Description = value;
+		this.description = value;
 	}
 
 }

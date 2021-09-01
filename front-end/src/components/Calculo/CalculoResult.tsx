@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 //react-bootstrap
 import {
@@ -12,6 +12,8 @@ export interface CalculoObject {
     id: string;
     value: string;
     description: string;
+    startValue: string;
+    finalValue: string;
 }
 
 export interface CalculoObjectArray {
@@ -47,6 +49,9 @@ interface CalculoProps {
 }
 
 const CalculoResult: React.FC<CalculoProps> = ({ calculo }) => {
+
+    const [karmicAbsencesLength, setKarmicAbsencesLength] = useState(calculo.karmicAbsences.list.length - 1);
+
     return (
         <Container className='mt-5'>
             <Row>
@@ -69,22 +74,27 @@ const CalculoResult: React.FC<CalculoProps> = ({ calculo }) => {
                             {
                                 calculo.lifeCycle.list.map((lifeCycle, index) => {
                                     return (
-                                        <Card.Text key={lifeCycle.id}><strong className="font-weight-bold">{index + 1}º Ciclo: </strong> {lifeCycle.value}</Card.Text>
+                                        <Card.Text key={index}><strong className="font-weight-bold">{index + 1}º Ciclo: </strong> {lifeCycle.value}</Card.Text>
                                     );
                                 })
                             }
                             {
                                 calculo.karmicNumber.list.map((karmicNumber, index) => {
                                     return (
-                                        <Card.Text key={karmicNumber.id}><strong className="font-weight-bold">Número Carmico {index + 1}: </strong> {karmicNumber.value}</Card.Text>
+                                        <Card.Text key={index}><strong className="font-weight-bold">Número Carmico {index + 1}: </strong> {karmicNumber.value}</Card.Text>
                                     );
                                 })
                             }
 
-                            <Card.Text><strong className="font-weight-bold">Ausência Carmica: </strong>
-                                {calculo.karmicAbsences.list.map((karmicAbsences, index) => {
-                                    return (karmicAbsences.value + ", ");
-                                })}
+                            <Card.Text>
+                                <strong className="font-weight-bold">Ausência Carmica: </strong>
+                                {
+                                    calculo.karmicAbsences.list.map((ka, index) => {
+                                        return(
+                                            index === karmicAbsencesLength ? ka.value : ka.value + ", "
+                                        );
+                                    })
+                                }
                             </Card.Text>
                         </Card.Body>
                     </Card>

@@ -1,11 +1,12 @@
 import CalculosObjectResponse from "./CalculusObjectResponse";
+import CalculosObjectTypeTwoResponse from "./CalculusObjectTypeTwoResponse";
 
 export default class CalculosObjectResponseArray {
-    private list: CalculosObjectResponse[];
+    private list: CalculosObjectTypeTwoResponse[] | CalculosObjectResponse[];
     private description: string;
 
 
-	constructor(list: CalculosObjectResponse[], description: string) {
+	constructor(list: CalculosObjectTypeTwoResponse[] | CalculosObjectResponse[], description: string) {
 		this.list = list;
 		this.description = description;
 	}
@@ -13,17 +14,17 @@ export default class CalculosObjectResponseArray {
 
     /**
      * Getter list
-     * @return {CalculosObjectResponse[]}
+     * @return {CalculosObjectTypeTwoResponse[] | CalculosObjectResponse[]}
      */
-	public getList(): CalculosObjectResponse[] {
+	public getList(): CalculosObjectTypeTwoResponse[] | CalculosObjectResponse[] {
 		return this.list;
 	}
 
     /**
      * Setter list
-     * @param {CalculosObjectResponse[]} value
+     * @param {CalculosObjectTypeTwoResponse[] | CalculosObjectResponse[]} value
      */
-	public setList(value: CalculosObjectResponse[]) {
+	public setList(value: CalculosObjectTypeTwoResponse[] | CalculosObjectResponse[]) {
 		this.list = value;
 	}
 

@@ -4,7 +4,7 @@ import CalculatorUseCase from "../useCases/CalculatorUseCase";
 export default class CalculateController {
   async index(request: Request, response: Response) {
     if (request.query.birthdate !== undefined &&
-      request.query.name != undefined &&
+      request.query.name !== undefined &&
       (request.query.deep === 'true' || request.query.deep === 'false')) {
         const deep = request.query.deep === 'true' ? true : false;
         const dateArray = request.query.birthdate.toString().split('-').map(Number);

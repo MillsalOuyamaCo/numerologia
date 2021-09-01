@@ -8,6 +8,6 @@ const mapGeneratorController = new GenerateMapController();
 
 routes.get('/calculate', calculatorController.index);
 
-routes.post('/generate-map', mapGeneratorController.create);
+routes.post('/generate-map', mapGeneratorController.index);
 
 export default routes;

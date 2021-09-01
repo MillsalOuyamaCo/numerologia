@@ -1,0 +1,22 @@
+[
+    {
+        "yourValue": "Seu temperamento é: ",
+        "id": "MENTAL",
+        "description": "  O Seu Temperamento é Mental: Tem personalidade forte, sabe lidar com empreendimentos. Determinação, raciocínio lógico (pés no chão), necessita comprovar aquilo que lhe é passado. Pioneira, administra bem. Tendência a ser inflexível.   Aconselhamento: Exercícios físicos, relaxamento. "
+    },
+    {
+        "yourValue": "Seu temperamento é: ",
+        "id": "FÍSICO",
+        "description": "O Seu Temperamento é Físico: Lida bem com assuntos práticos e de ordem material. Possui o espírito ordeiro, tradicional e tem facilidade para concentração. Prefere a realização do que a imaginação. Tem muita resistência física para o trabalho árduo. Estressa–se com facilidade.   Aconselhamento: Parar de ser crítico e cobrador. Exercício: meditação. "
+    },
+    {
+        "yourValue": "Seu temperamento é: ",
+        "id": "EMOCIONAL",
+        "description": "O Seu Temperamento é Emocional: Tendência a emoções e aos sentimentos. Age mais com o coração do que com a mente. Bondosa, sentimental, na vida os relacionamentos e o amor têm mais importância. Tem imaginação, dons artísticos e criatividade. Dificuldade em traçar objetivos, não consegue realizar, fica só sonhando.   Aconselhamento: Massagem para aliviar a tensão. "
+    },
+    {
+        "yourValue": "Seu temperamento é: ",
+        "id": "INTUITIVO",
+        "description": "O Seu Temperamento é Intuitivo: Tendência à percepção, buscar respostas no abstrato e no desconhecido. Dificuldade em tratar de assuntos materiais. Gosta de leitura, silêncio, meditação. Está a procura de respostas e busca o enriquecimento espiritual. Saúde emocional delicada.   Aconselhamento: Ter contato direto com a natureza."
+    }
+]   

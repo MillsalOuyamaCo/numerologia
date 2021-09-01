@@ -1,27 +1,27 @@
-import MapItemTypeTwoResponse from "./MapItemTypeTwoResponse";
+import MapItemResponse from "./MapItemResponse";
 
 export default class MapResponse {
-    private MapItemTypeTwoList: MapItemTypeTwoResponse[];
+    private data: MapItemResponse[];
 
 
-	constructor(MapItemTypeTwoList: MapItemTypeTwoResponse[]) {
-		this.MapItemTypeTwoList = MapItemTypeTwoList;
+	constructor(MapItemResponse: MapItemResponse[]) {
+		this.data = MapItemResponse;
 	}
 
     /**
      * Getter MapItemTypeTwoList
-     * @return {MapItemTypeTwoResponse[]}
+     * @return {MapItemResponse[]}
      */
-	public getMapItemTypeTwoList(): MapItemTypeTwoResponse[] {
-		return this.MapItemTypeTwoList;
+	public getMapItemTypeTwoList(): MapItemResponse[] {
+		return this.data;
 	}
 
     /**
      * Setter MapItemTypeTwoList
-     * @param {MapItemTypeTwoResponse[]} value
+     * @param {MapItemResponse[]} value
      */
-	public setMapItemTypeTwoList(value: MapItemTypeTwoResponse[]) {
-		this.MapItemTypeTwoList = value;
+	public setMapItemTypeTwoList(value: MapItemResponse[]) {
+		this.data = value;
 	}
 
 }
