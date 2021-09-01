@@ -113,7 +113,7 @@ export default class Calculator {
 
     public calculateVibration = (birthDay: number): Vibration => {
         let vibrationListEnum = new VibrationsListEnum();
-        let reducedBirthDay = this.calculateReducedNumber(birthDay, false);
+        let reducedBirthDay = this.calculateReduceUntilMin(birthDay);
 
         let result = vibrationListEnum.list.find(v => v.getVibrationValue() === reducedBirthDay);
 
