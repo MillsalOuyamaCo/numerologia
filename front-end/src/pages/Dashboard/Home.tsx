@@ -21,7 +21,7 @@ import MapRequest from '../../components/model/requests/MapRequest';
 import IData from '../../components/model/responses/IData';
 
 
-function Home() {
+const Home = () => {
     const CalculoObjectResponse: CalculoObject = {
         id: "",
         value: "",
