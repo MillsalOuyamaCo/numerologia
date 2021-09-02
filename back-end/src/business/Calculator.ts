@@ -234,7 +234,7 @@ export default class Calculator {
         let reducingNumberAsString = reducingNumber.toString().split('');
 
         if (!isKarmicNumber) {
-            while(isKarmicNumber || reducingNumber > 13) {
+            while(!isKarmicNumber && (reducingNumber > 13)) {
                 let reducingNumberArray = reducingNumberAsString.map(Number);
 
                 reducingNumber = reducingNumberArray.reduce(this.reducer);
