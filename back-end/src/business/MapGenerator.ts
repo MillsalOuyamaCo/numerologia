@@ -181,7 +181,7 @@ export default class MapGenerator {
                         return new MapSubItemResponse(`Dos ${items[index].startValue} aos ${items[index].finalValue}, 1º Formativo: ${i.getId()}`, `${i.getDescription()}`);
                     } else if(index === 1 && items[index].id === i.getId()) {
                         return new MapSubItemResponse(`Dos ${items[index].startValue} aos ${items[index].finalValue}, 2º Produtivo: ${i.getId()}`, `${i.getDescription()}`);
-                    } else if(index === 1 && items[index].id === i.getId()) {
+                    } else if(index === 2 && items[index].id === i.getId()) {
                         return new MapSubItemResponse(`Dos ${items[index].startValue} ${items[index].finalValue}, 2º Colheita: ${i.getId()}`, `${i.getDescription()}`);
                     }
                 //}

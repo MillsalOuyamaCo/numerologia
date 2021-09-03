@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link, NavLink } from 'react-router-dom';
 
 //react-bootstrap
 import {
@@ -11,12 +12,18 @@ const LandingPageNavbar = () => {
     return (
         <Navbar>
             <Container>
-                <Navbar.Brand href="#home">Mapa Numerológico</Navbar.Brand>
+                <Navbar.Brand as={Link} to="/">Mapa Numerológiconpm</Navbar.Brand>
                 <Navbar.Toggle />
                 <Nav className="me-auto">
-                    <Nav.Link href="#home">Home</Nav.Link>
-                    <Nav.Link href="#features">Features</Nav.Link>
+                    <Nav.Link as={Link} to="/">Home</Nav.Link>
+                    <Nav.Link as={Link} to="/features">Features</Nav.Link>
                     <Nav.Link href="#pricing">Pricing</Nav.Link>
+                </Nav>
+                <Nav>
+                    <Nav.Link href="#deets">Cadastre-se</Nav.Link>
+                    <Nav.Link href="#memes">
+                        Login
+                    </Nav.Link>
                 </Nav>
             </Container>
         </Navbar>
